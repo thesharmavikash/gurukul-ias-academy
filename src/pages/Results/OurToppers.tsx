@@ -38,7 +38,7 @@ const OurToppers: React.FC = () => {
   ];
 
   return (
-    <div className="bg-slate-50 pb-32">
+    <div className="bg-white dark:bg-black pb-32 transition-colors">
       <SEO 
         title="Our UPSC Toppers | Success Stories" 
         description="Meet the successful candidates from Gurukul IAS Academy Hajipur who cracked the UPSC Civil Services Examination and State PSCs."
@@ -52,12 +52,12 @@ const OurToppers: React.FC = () => {
                initial={{ opacity: 0, scale: 0.5 }}
                whileInView={{ opacity: 1, scale: 1 }}
                viewport={{ once: true }}
-               className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6 shadow-xl shadow-blue-200"
+               className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6 shadow-xl shadow-red-200 dark:shadow-none"
             >
                <Award size={16} /> Pride of Gurukul
             </motion.div>
-            <h2 className="text-4xl md:text-6xl font-black text-blue-900 leading-tight mb-6">Celebrating <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">Excellence</span>.</h2>
-            <p className="text-xl text-slate-500 font-medium">Every year, our students rewrite their destinies. Here are some of the brilliant minds who made us proud.</p>
+            <h2 className="text-4xl md:text-6xl font-black text-red-900 dark:text-white leading-tight mb-6 tracking-tighter italic">Celebrating <span className="text-red-600 underline decoration-red-200 dark:decoration-red-900 underline-offset-8">Excellence</span>.</h2>
+            <p className="text-xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Every year, our students rewrite their destinies. Here are some of the brilliant minds who made us proud.</p>
          </div>
 
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -68,48 +68,48 @@ const OurToppers: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[50px] overflow-hidden shadow-2xl shadow-blue-900/5 border border-slate-100 group"
+                className="bg-white dark:bg-zinc-900 rounded-[50px] overflow-hidden shadow-2xl shadow-red-900/5 dark:shadow-none border border-slate-100 dark:border-zinc-800 group"
               >
                 <div className="relative h-72 overflow-hidden">
                    <img src={topper.image} alt={topper.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
-                   <div className="absolute top-6 left-6 bg-blue-600 text-white px-4 py-1.5 rounded-xl font-black text-xs shadow-lg">
+                   <div className="absolute top-6 left-6 bg-red-600 text-white px-4 py-1.5 rounded-xl font-black text-xs shadow-lg">
                       {topper.rank}
                    </div>
                 </div>
                 <div className="p-8">
-                   <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-2">{topper.exam}</p>
-                   <h4 className="text-2xl font-black text-blue-900 mb-4">{topper.name}</h4>
-                   <div className="h-px w-10 bg-slate-200 mb-6 group-hover:w-full transition-all duration-500"></div>
-                   <p className="text-slate-500 text-sm italic leading-relaxed font-medium">"{topper.quote}"</p>
+                   <p className="text-red-600 dark:text-red-400 font-bold text-xs uppercase tracking-widest mb-2">{topper.exam}</p>
+                   <h4 className="text-2xl font-black text-red-900 dark:text-white mb-4 tracking-tight">{topper.name}</h4>
+                   <div className="h-px w-10 bg-red-100 dark:bg-red-900/30 mb-6 group-hover:w-full transition-all duration-500"></div>
+                   <p className="text-slate-500 dark:text-slate-400 text-sm italic leading-relaxed font-medium">"{topper.quote}"</p>
                 </div>
               </motion.div>
             ))}
          </div>
 
          <div className="mt-32 grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-1 bg-blue-900 p-12 rounded-[50px] text-white flex flex-col justify-center relative overflow-hidden">
+            <div className="lg:col-span-1 bg-red-950 p-12 rounded-[50px] text-white flex flex-col justify-center relative overflow-hidden group shadow-2xl">
                <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-               <TrendingUp size={48} className="text-blue-400 mb-8" />
-               <h3 className="text-3xl font-black mb-6 leading-tight">Consistent <br /> Growth.</h3>
-               <p className="text-blue-100/60 font-medium mb-8">Our selection ratio has improved by 40% in the last 3 batches due to our updated methodology.</p>
-               <div className="flex gap-4">
+               <TrendingUp size={48} className="text-red-400 mb-8 relative z-10" />
+               <h3 className="text-3xl font-black mb-6 leading-tight tracking-tighter relative z-10">Consistent <br /> Growth.</h3>
+               <p className="text-red-100/60 font-medium mb-8 relative z-10">Our selection ratio has improved by 40% in the last 3 batches due to our updated methodology.</p>
+               <div className="flex gap-4 relative z-10">
                   <div className="flex flex-col">
                      <span className="text-2xl font-black">15+</span>
-                     <span className="text-[10px] uppercase font-bold tracking-widest text-blue-400">Selections 2023</span>
+                     <span className="text-[10px] uppercase font-bold tracking-widest text-red-400">Selections 2023</span>
                   </div>
                   <div className="w-px h-10 bg-white/10"></div>
                   <div className="flex flex-col">
                      <span className="text-2xl font-black">200+</span>
-                     <span className="text-[10px] uppercase font-bold tracking-widest text-blue-400">Mock Interviews</span>
+                     <span className="text-[10px] uppercase font-bold tracking-widest text-red-400">Mock Interviews</span>
                   </div>
                </div>
             </div>
             
-            <div className="lg:col-span-2 bg-white p-12 rounded-[50px] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col items-center justify-center text-center">
-               <Star className="text-blue-600 mb-6 fill-blue-100" size={40} />
-               <h3 className="text-3xl font-black text-blue-900 mb-4">Be the Next Success Story.</h3>
-               <p className="text-slate-500 text-lg max-w-lg mb-10 font-medium">Join Gurukul IAS Academy today and take the first step towards a prestigious career in the Civil Services.</p>
-               <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-5 rounded-2xl font-black tracking-widest uppercase text-sm shadow-2xl shadow-blue-200 transition-all active:scale-95">
+            <div className="lg:col-span-2 bg-slate-50 dark:bg-zinc-900/50 p-12 rounded-[50px] border border-slate-100 dark:border-zinc-800 shadow-xl shadow-red-200/20 dark:shadow-none flex flex-col items-center justify-center text-center">
+               <Star className="text-red-600 mb-6 fill-red-100 dark:fill-red-900/20" size={40} />
+               <h3 className="text-3xl md:text-5xl font-black text-red-900 dark:text-white mb-4 tracking-tighter italic">Be the Next Success Story.</h3>
+               <p className="text-slate-500 dark:text-slate-400 text-lg max-w-lg mb-10 font-medium">Join Gurukul IAS Academy today and take the first step towards a prestigious career in the Civil Services.</p>
+               <Link to="/contact" className="bg-red-600 hover:bg-red-700 text-white px-12 py-5 rounded-2xl font-black tracking-widest uppercase text-sm shadow-2xl shadow-red-200 dark:shadow-none transition-all active:scale-95">
                   Book A Strategy Session
                </Link>
             </div>

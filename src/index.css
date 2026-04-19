@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@layer base {
+  html {
+    @apply antialiased scroll-smooth;
+  }
+  
+  body {
+    @apply transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-black text-slate-50;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-white/20 dark:border-slate-800/50;
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+}
