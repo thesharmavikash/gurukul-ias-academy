@@ -5,7 +5,7 @@ import campusVideo from '../assets/campus-CW9By398.MP4';
 import admissionPic from '../assets/admission-DTCmaV1f.jpg';
 import studentsPic from '../assets/stude-BU_RUMug.png';
 import sirPic from '../assets/sir-CGU2M9k_.jpg';
-import { BookOpen, Users, ChevronRight, Phone, Award, Star, Download, PlayCircle, Calendar } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, ArrowRight, Star, Award, ShieldCheck, MapPin } from 'lucide-react';
 import NoticeBoard from '../components/NoticeBoard';
 import Testimonials from '../components/Testimonials';
 import SEO from '../components/SEO';
@@ -13,8 +13,8 @@ import SEO from '../components/SEO';
 const Home: React.FC = () => {
   const schoolSchema = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Gurukul IAS Academy",
+    "@type": "School",
+    "name": "Gurukul Vidyapeeth Hajipur",
     "url": "https://gurukulvidyapeethhajipur.org",
     "logo": "https://gurukulvidyapeethhajipur.org/logo.png",
     "address": {
@@ -28,234 +28,250 @@ const Home: React.FC = () => {
     "telephone": "+91-9931602179"
   };
 
-  const courses = [
-    {
-      title: "GS Foundation Batch",
-      desc: "Comprehensive coverage of Prelims & Mains syllabus with integrated test series.",
-      duration: "12 Months",
-      type: "Online / Offline"
-    },
-    {
-      title: "Optional Subjects",
-      desc: "Specialized coaching for History, Geography, PSIR, and Sociology.",
-      duration: "5 Months",
-      type: "Offline Only"
-    },
-    {
-      title: "Prelims Test Series",
-      desc: "50+ Tests covering GS and CSAT with detailed performance analysis.",
-      duration: "Till Prelims",
-      type: "Online"
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
     }
-  ];
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
-    <div className="flex flex-col w-full bg-white text-slate-900">
+    <div className="flex flex-col w-full bg-slate-50 text-slate-900 overflow-hidden">
       <SEO 
-        title="Best IAS Coaching in Hajipur | UPSC CSE Preparation" 
-        description="Gurukul IAS Academy Hajipur offers top-tier coaching for UPSC Civil Services Examination. Join our GS Foundation and Optional batches."
-        keywords="IAS Coaching Hajipur, UPSC Preparation Bihar, Gurukul IAS, Best UPSC Institute, Civil Services Coaching"
+        title="Welcome to Gurukul Vidyapeeth | Modern Education in Hajipur" 
+        description="Experience the future of education at Gurukul Vidyapeeth Hajipur. Holistic learning, modern infrastructure, and character development."
+        keywords="Gurukul Vidyapeeth, Best School Hajipur, Modern Education, CBSE School Bihar"
         schemaMarkup={schoolSchema}
       />
       
-      <NoticeBoard />
-
-      {/* Hero Section */}
-      <section className="relative w-full h-[600px] md:h-[800px] overflow-hidden pt-[90px] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover brightness-50">
-            <source src={campusVideo} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-transparent"></div>
-        </div>
+      {/* Immersive Hero Section */}
+      <section className="relative h-[90vh] md:h-screen w-full overflow-hidden flex items-center justify-center">
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover brightness-[0.4] scale-105">
+          <source src={campusVideo} type="video/mp4" />
+        </video>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+        {/* Modern Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-primary/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-transparent to-primary/60"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-2 mb-6">
-              <span className="h-px w-12 bg-blue-400"></span>
-              <span className="text-blue-400 font-bold uppercase tracking-[0.3em] text-sm">Empowering Civil Servants</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-[1.1]">
-              Your Journey to <br />
-              <span className="text-blue-400">LBSNAA</span> Starts Here.
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-50/80 mb-10 font-medium leading-relaxed">
-              Experience the most structured and result-oriented UPSC preparation with India's top faculty.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/admission-process" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-blue-900/40 flex items-center gap-3 active:scale-95">
-                Apply for New Batch <ChevronRight size={20} />
-              </Link>
-              <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-xl font-bold text-lg transition-all flex items-center gap-3">
-                <PlayCircle size={24} /> Demo Class
-              </button>
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full mb-8 shadow-2xl">
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+              <span className="text-white text-xs font-black uppercase tracking-[0.3em]">Excellence Defined</span>
             </div>
             
-            <div className="mt-16 flex gap-12 items-center">
-               <div className="flex -space-x-4">
-                 {[1,2,3,4].map(i => (
-                   <div key={i} className="w-12 h-12 rounded-full border-2 border-blue-900 bg-slate-200 overflow-hidden shadow-lg">
-                      <img src={`https://i.pravatar.cc/150?u=${i}`} alt="Student" />
-                   </div>
-                 ))}
-                 <div className="w-12 h-12 rounded-full border-2 border-blue-900 bg-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg">
-                   +500
-                 </div>
-               </div>
-               <div className="text-blue-100/60">
-                 <p className="font-bold text-white text-lg">Successful Candidates</p>
-                 <p className="text-sm">In Last 5 Years</p>
-               </div>
+            <h1 className="text-5xl md:text-[7rem] font-black text-white leading-[0.9] tracking-tighter mb-8 drop-shadow-2xl">
+              TRADITION <br /> <span className="text-accent underline decoration-white/20 underline-offset-[1rem]">MEETS</span> FUTURE
+            </h1>
+            
+            <p className="text-xl md:text-3xl text-white/80 max-w-3xl mx-auto mb-12 font-medium leading-relaxed drop-shadow-xl">
+              Empowering young minds in Hajipur with a curriculum built for the 21st century.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link to="/admission-process" className="bg-accent hover:bg-rose-700 text-white px-12 py-6 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-[0_20px_50px_rgba(225,29,72,0.4)] transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-3">
+                Secure Admission <ArrowRight size={20} />
+              </Link>
+              <Link to="/mission" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-12 py-6 rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all hover:-translate-y-1 active:scale-95">
+                Explore Campus
+              </Link>
             </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+              <div className="w-1 h-2 bg-accent rounded-full animate-bounce"></div>
+           </div>
+        </div>
+      </section>
+
+      {/* Modern Bento Grid Features */}
+      <section className="py-32 px-6 bg-slate-50 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+             <h2 className="text-primary text-sm font-black uppercase tracking-[0.4em] mb-6">Our Foundation</h2>
+             <h3 className="text-4xl md:text-6xl font-black text-primary leading-tight">
+               Built for <span className="text-accent italic">Growth</span>. <br /> Designed for <span className="text-accent italic">Leaders</span>.
+             </h3>
+          </div>
+
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {/* Bento Cell 1: Large Admission */}
+            <motion.div variants={itemVariants} className="md:col-span-2 bento-card group">
+              <div className="flex flex-col md:flex-row h-full">
+                <div className="p-12 md:w-1/2 flex flex-col justify-between">
+                  <div>
+                    <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-8 group-hover:rotate-6 transition-transform">
+                      <GraduationCap size={32} />
+                    </div>
+                    <h4 className="text-3xl font-black text-primary mb-4 uppercase tracking-tighter">Academic Pathways</h4>
+                    <p className="text-slate-500 font-medium leading-relaxed">From foundational years to higher secondary excellence, we offer a specialized curriculum tailored to individual potential.</p>
+                  </div>
+                  <Link to="/admission-process" className="mt-10 flex items-center gap-3 font-black text-accent uppercase tracking-widest text-xs hover:gap-5 transition-all">
+                    Enrolment Process <ArrowRight size={16} />
+                  </Link>
+                </div>
+                <div className="md:w-1/2 relative overflow-hidden h-64 md:h-auto">
+                  <img src={admissionPic} alt="Admissions" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Bento Cell 2: Curriculum */}
+            <motion.div variants={itemVariants} className="bento-card p-12 bg-primary text-white relative group border-0">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-accent mb-8 group-hover:scale-110 transition-transform">
+                    <BookOpen size={32} />
+                  </div>
+                  <h4 className="text-3xl font-black mb-4 uppercase tracking-tighter">Curriculum</h4>
+                  <p className="text-slate-400 font-medium leading-relaxed">Integrated IBS model focusing on Human & Artificial Intelligence.</p>
+                </div>
+                <Link to="/curriculum" className="flex items-center gap-3 font-black text-white uppercase tracking-widest text-xs hover:gap-5 transition-all">
+                  View Syllabus <ArrowRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Bento Cell 3: Residential */}
+            <motion.div variants={itemVariants} className="bento-card p-12 group hover:bg-slate-900 hover:text-white transition-colors">
+              <div className="w-14 h-14 bg-slate-100 group-hover:bg-accent/20 rounded-2xl flex items-center justify-center text-primary group-hover:text-accent mb-8">
+                <Users size={32} />
+              </div>
+              <h4 className="text-3xl font-black mb-4 uppercase tracking-tighter">Boarding Life</h4>
+              <p className="text-slate-500 group-hover:text-slate-400 font-medium leading-relaxed mb-10">A safe, discipline-oriented residential ecosystem that feels like home.</p>
+              <Link to="/boarding" className="flex items-center gap-3 font-black text-accent uppercase tracking-widest text-xs hover:gap-5 transition-all">
+                Learn More <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+
+            {/* Bento Cell 4: Success Stats */}
+            <motion.div variants={itemVariants} className="md:col-span-2 bento-card p-12 bg-white flex flex-col md:flex-row items-center justify-around gap-12 text-center group">
+               <div className="space-y-2">
+                  <h5 className="text-5xl font-black text-primary group-hover:text-accent transition-colors">20+</h5>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Years Legacy</p>
+               </div>
+               <div className="w-px h-16 bg-slate-100 hidden md:block"></div>
+               <div className="space-y-2">
+                  <h5 className="text-5xl font-black text-primary group-hover:text-accent transition-colors">100%</h5>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Board Result</p>
+               </div>
+               <div className="w-px h-16 bg-slate-100 hidden md:block"></div>
+               <div className="space-y-2">
+                  <h5 className="text-5xl font-black text-primary group-hover:text-accent transition-colors">5000+</h5>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Global Alumni</p>
+               </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-slate-50 py-16 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { label: "Selections", value: "250+", icon: Award },
-            { label: "Expert Faculty", value: "40+", icon: Users },
-            { label: "Course Content", value: "1000h+", icon: BookOpen },
-            { label: "Student Rating", value: "4.9/5", icon: Star },
-          ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-sm border border-slate-100">
-              <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-4">
-                <stat.icon size={24} />
+      {/* Director's Profile - High End Design */}
+      <section className="py-40 bg-white relative overflow-hidden">
+        <div className="absolute left-0 bottom-0 w-[600px] h-[600px] bg-slate-50 rounded-full -translate-x-1/2 translate-y-1/2 border border-slate-100"></div>
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-32 items-center relative z-10">
+          <div className="order-2 md:order-1 relative">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="relative z-10"
+            >
+              <div className="absolute -inset-10 bg-slate-100 rounded-[5rem] -rotate-6 z-0"></div>
+              <img src={sirPic} alt="Director" className="relative z-10 rounded-[4rem] shadow-[0_50px_100px_rgba(15,23,42,0.2)] w-full grayscale contrast-125 border-8 border-white" />
+              <div className="absolute -bottom-12 -right-12 z-20 bg-accent text-white p-12 rounded-[3rem] shadow-3xl transform rotate-6 border-8 border-white group">
+                 <Award size={48} className="mb-4" />
+                 <p className="font-black text-xl leading-none">Best School</p>
+                 <p className="text-[10px] font-black uppercase tracking-widest mt-1 opacity-70">Region Award 2023</p>
               </div>
-              <h4 className="text-3xl font-black text-blue-900 mb-1">{stat.value}</h4>
-              <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Courses Section */}
-      <section className="py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div className="max-w-2xl">
-              <h2 className="text-blue-600 font-bold uppercase tracking-[0.2em] text-sm mb-4">Our Programs</h2>
-              <h3 className="text-4xl md:text-5xl font-black text-blue-900 leading-tight">
-                Built for <span className="underline decoration-blue-200 underline-offset-8">Aspirants</span>, <br /> Driven by Results.
-              </h3>
-            </div>
-            <Link to="/courses" className="text-blue-600 font-bold flex items-center gap-2 hover:gap-4 transition-all pb-2 border-b-2 border-blue-100">
-              View All Courses <ChevronRight size={20} />
-            </Link>
+            </motion.div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {courses.map((course, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ y: -10 }}
-                className="bg-white p-10 rounded-[40px] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col h-full group"
-              >
-                <div className="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center text-blue-600 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <BookOpen size={32} />
-                </div>
-                <h4 className="text-2xl font-black text-blue-900 mb-4">{course.title}</h4>
-                <p className="text-slate-600 mb-8 flex-grow leading-relaxed">
-                  {course.desc}
-                </p>
-                <div className="flex items-center justify-between pt-8 border-t border-slate-50">
-                  <div className="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase">
-                    <Calendar size={14} /> {course.duration}
-                  </div>
-                  <div className="bg-slate-100 text-slate-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
-                    {course.type}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Download Section */}
-      <section className="bg-blue-900 py-24 px-6 overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
-           <div className="lg:w-1/2 text-white">
-              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Get Your Study <br /> Material for <span className="text-blue-400">Free</span>.</h2>
-              <p className="text-xl text-blue-100/70 mb-12 max-w-lg leading-relaxed">
-                Unlock exclusive access to NCERT summaries, monthly current affairs, and previous year paper analyses.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                 <button className="bg-white text-blue-900 p-6 rounded-3xl flex flex-col items-start gap-4 hover:bg-blue-50 transition-colors">
-                    <Download className="text-blue-600" />
-                    <span className="font-bold text-lg">Syllabus PDF</span>
-                 </button>
-                 <button className="bg-blue-800 text-white p-6 rounded-3xl flex flex-col items-start gap-4 hover:bg-blue-700 transition-colors border border-blue-700">
-                    <Download className="text-blue-400" />
-                    <span className="font-bold text-lg">Strategy Guide</span>
-                 </button>
-              </div>
-           </div>
-           <div className="lg:w-1/2">
-              <img src={studentsPic} alt="Resources" className="rounded-[60px] shadow-3xl transform lg:rotate-3 hover:rotate-0 transition-transform duration-700 w-full" />
-           </div>
-        </div>
-      </section>
-
-      {/* Chairman Section */}
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-24">
-          <div className="lg:w-2/5">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-blue-100 rounded-[50px] -rotate-3"></div>
-              <img src={sirPic} alt="Chairman" className="relative z-10 rounded-[40px] shadow-2xl w-full grayscale contrast-125" />
-              <div className="absolute -bottom-8 -left-8 z-20 bg-white p-8 rounded-3xl shadow-2xl border border-slate-100">
-                 <Award className="text-blue-600 mb-2" size={32} />
-                 <p className="font-black text-blue-900">Dr. Subhash Singh</p>
-                 <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Director & Mentor</p>
-              </div>
-            </div>
-          </div>
-          <div className="lg:w-3/5">
-            <h2 className="text-blue-600 font-bold uppercase tracking-[0.2em] text-sm mb-6">Director's Insight</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-blue-900 mb-10 leading-tight italic">
-              "We don't just teach for an exam; we prepare you for a lifetime of leadership and service."
+          <div className="order-1 md:order-2">
+            <h2 className="text-accent text-sm font-black uppercase tracking-[0.4em] mb-8">Executive Note</h2>
+            <h3 className="text-4xl md:text-[4rem] font-black text-primary leading-[1] mb-12 italic">
+              "Building <span className="text-accent">Character</span> is our <span className="underline decoration-slate-200 underline-offset-[1rem]">Curriculum</span>."
             </h3>
-            <div className="space-y-6 text-slate-600 text-lg leading-relaxed text-justify font-medium">
-              <p>
-                Civil Services is not just a career choice; it is a calling. At Gurukul IAS, we understand the immense dedication required to crack this exam. Our pedagogy is designed to simplify complex concepts and build the analytical mindset required for a bureaucrat.
-              </p>
-              <p>
-                From foundational knowledge to advanced answer writing skills, our mentors guide you through every hurdle of the UPSC CSE journey.
-              </p>
+            <div className="space-y-8 text-slate-500 text-lg leading-relaxed font-medium">
+               <p className="text-justify border-l-4 border-accent pl-10 py-2">
+                 At Gurukul Vidyapeeth, we are driven by the belief that every child is a unique universe of potential. Our role is not to fill a vessel, but to ignite a fire.
+               </p>
+               <p className="text-justify border-l-4 border-slate-100 pl-10 py-2">
+                 We've engineered an environment that blends academic rigor with the emotional intelligence required to lead in a globalized world.
+               </p>
             </div>
-            <Link to="/about/directors-message" className="mt-12 inline-block bg-blue-50 text-blue-700 px-10 py-4 rounded-2xl font-bold hover:bg-blue-600 hover:text-white transition-all">
-              Read Full Message
-            </Link>
+            <div className="mt-16 pt-10 border-t border-slate-100">
+               <p className="font-black text-primary text-2xl tracking-tighter">DR. SUBHASH SINGH</p>
+               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mt-1">Chairman & Visionary</p>
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* Legacy & Values */}
+      <section className="py-32 bg-primary text-white relative overflow-hidden">
+         <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+         <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+               <div>
+                  <h2 className="text-4xl md:text-6xl font-black mb-10 leading-tight uppercase tracking-tighter">Campus of <br /> the <span className="text-accent underline decoration-white/20 underline-offset-[1rem]">Future</span>.</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                     <div className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <ShieldCheck className="text-accent mb-6" size={32} />
+                        <h5 className="font-black text-xl mb-4 tracking-tight">Security First</h5>
+                        <p className="text-sm text-slate-400 leading-relaxed font-medium">24/7 advanced surveillance and professional security personnel.</p>
+                     </div>
+                     <div className="p-8 bg-white/5 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <Star className="text-accent mb-6" size={32} />
+                        <h5 className="font-black text-xl mb-4 tracking-tight">Expert Faculty</h5>
+                        <p className="text-sm text-slate-400 leading-relaxed font-medium">Mentors with decades of experience in international pedagogy.</p>
+                     </div>
+                  </div>
+               </div>
+               <div className="relative">
+                  <div className="absolute -inset-10 bg-accent/20 rounded-full blur-[100px]"></div>
+                  <img src={studentsPic} alt="Infrastructure" className="relative z-10 rounded-[4rem] shadow-3xl border-8 border-white/5 grayscale hover:grayscale-0 transition-all duration-1000" />
+               </div>
+            </div>
+         </div>
       </section>
 
       <Testimonials />
 
-      {/* Contact Banner */}
-      <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
+      {/* Final Call to Action */}
+      <section className="py-32 px-6 bg-slate-50 border-t border-slate-100">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-black text-blue-900 mb-8">Start Your UPSC Journey Today.</h2>
-          <p className="text-xl text-slate-500 mb-12 font-medium">Have questions? Our counselors are available 10 AM to 6 PM to guide you on the right path.</p>
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            <a href="tel:+919931602179" className="flex items-center justify-center gap-4 bg-white border border-slate-200 px-10 py-6 rounded-3xl hover:border-blue-600 transition group shadow-sm">
-              <Phone className="text-blue-600 group-hover:scale-110 transition-transform" size={28} />
-              <div className="text-left">
-                <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Call Counselor</p>
-                <p className="text-lg font-black text-blue-900">+91 9931602179</p>
-              </div>
-            </a>
-            <Link to="/contact" className="bg-blue-600 text-white px-12 py-6 rounded-3xl font-black text-xl flex items-center justify-center shadow-2xl shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95">
-              Book a Free Counseling
+          <div className="inline-flex items-center gap-3 text-accent font-black text-xs uppercase tracking-[0.4em] mb-10">
+             <MapPin size={16} /> Visit Us in Hajipur
+          </div>
+          <h2 className="text-4xl md:text-7xl font-black text-primary mb-10 leading-[1] tracking-tighter">Shape their <br /> destiny <span className="text-accent italic">today</span>.</h2>
+          <p className="text-xl text-slate-500 mb-16 font-medium max-w-2xl mx-auto">Registration for the 2024-25 session is approaching capacity. Secure your child's future at Gurukul.</p>
+          
+          <div className="flex flex-col md:flex-row justify-center gap-8">
+            <Link to="/contact" className="bg-primary text-white px-16 py-8 rounded-[2.5rem] font-black text-xl flex items-center justify-center shadow-3xl shadow-primary/20 hover:bg-slate-800 transition-all active:scale-95 group">
+              Get an Invite <ArrowRight size={24} className="ml-4 group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
         </div>

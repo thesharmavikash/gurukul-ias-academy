@@ -9,20 +9,17 @@ const Sidebar: React.FC<SidebarProps> = ({ links }) => {
   const location = useLocation();
 
   return (
-    <div className="border border-slate-100 rounded-[32px] overflow-hidden shadow-2xl shadow-slate-200/50 sticky top-[120px]">
-      <div className="bg-slate-900 p-6">
-        <h4 className="text-white font-black text-xs uppercase tracking-[0.2em]">Navigation</h4>
-      </div>
+    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-sm sticky top-[120px]">
       {links.map((link) => {
         const isActive = location.pathname === link.path;
         return (
           <Link
             key={link.path}
             to={link.path}
-            className={`block px-8 py-5 border-b border-slate-50 last:border-0 transition-all duration-300 font-bold text-sm uppercase tracking-wider ${
+            className={`block px-6 py-4 border-b border-gray-100 last:border-0 transition-all duration-300 font-medium ${
               isActive 
-                ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/20' 
-                : 'bg-white text-slate-500 hover:bg-slate-50 hover:text-blue-600'
+                ? 'bg-red-700 text-white shadow-inner' 
+                : 'bg-white text-gray-600 hover:bg-red-50 hover:text-red-700'
             }`}
           >
             {link.name}

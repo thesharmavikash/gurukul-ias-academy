@@ -8,21 +8,21 @@ interface PageHeroProps {
 
 const PageHero: React.FC<PageHeroProps> = ({ title, breadcrumb }) => {
   return (
-    <section className="w-full h-[300px] md:h-[450px] relative overflow-hidden pt-[90px]">
+    <section className="w-full h-[250px] md:h-[400px] relative overflow-hidden">
       <img 
         src={bgImg} 
         alt={title} 
-        className="absolute inset-0 w-full h-full object-cover brightness-[0.4]"
+        className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: "center 35%" }} 
       />
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-        <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6 drop-shadow-2xl">
+      <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center px-4 text-white">
+        <div className="bg-red-700/60 backdrop-blur-md px-8 py-4 md:px-16 md:py-8 rounded-2xl text-center border border-white/20 shadow-2xl">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight uppercase">
             {title}
           </h1>
-          <div className="inline-flex items-center gap-2 text-blue-100 text-sm md:text-base font-bold tracking-widest bg-blue-600/30 backdrop-blur-md px-6 py-2 rounded-full border border-white/10">
-            <span className="opacity-60">Home</span> {breadcrumb}
-          </div>
+        </div>
+        <div className="mt-6 text-red-200 text-sm md:text-base font-medium tracking-wide bg-black/40 px-4 py-1 rounded-full border border-red-900/30 uppercase tracking-widest">
+          Home {breadcrumb}
         </div>
       </div>
     </section>
